@@ -1,0 +1,15 @@
+CREATE TABLE `money` (
+    `id` bigint(20) unsigned NOT NULL,
+    `income` tinyint(1) NOT NULL DEFAULT '0',
+    `date` date NOT NULL,
+    `type` varchar(70) NOT NULL,
+    `amount` bigint(20) unsigned NOT NULL,
+    `currency` varchar(3) NOT NULL DEFAULT 'GBP',
+    `originalAmount` bigint(20) unsigned NOT NULL,
+    `originalCurrency` varchar(3) NOT NULL DEFAULT 'GBP',
+    `exchangeRate` bigint(20) unsigned NOT NULL DEFAULT '10000',
+    `cash` tinyint(1) NOT NULL DEFAULT '0',
+    `finnished` tinyint(1) NOT NULL DEFAULT '0',
+     UNIQUE KEY `id` (`id`),
+     KEY `index` (`id`)
+);
