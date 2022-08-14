@@ -1,0 +1,4 @@
+CREATE FUNCTION `incomeSumAll`() RETURNS bigint(20) unsigned
+BEGIN
+   RETURN (SELECT ROUND((SUM(amount)/10000), 2) AS amount FROM `money` WHERE `income` = true);
+END ;;

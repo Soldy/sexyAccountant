@@ -1,0 +1,6 @@
+CREATE FUNCTION `incomeSumSearch`(
+  `ITYPE` VARCHAR(70) CHARSET utf8
+) RETURNS bigint(20) unsigned
+BEGIN
+   RETURN (SELECT ROUND((SUM(amount)/10000), 2) AS amount FROM `money` WHERE `income` = true AND `type` LIKE CONCAT('%', ITYPE, '%'));
+END ;;

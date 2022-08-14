@@ -1,0 +1,35 @@
+CREATE FUNCTION `outcomeAdd`(
+  `IDATE` DATE,
+  `ITYPE` VARCHAR(70) CHARSET utf8,
+  `IAMOUNT` BIGINT UNSIGNED,
+  `ICURRENCY` VARCHAR(3) CHARSET utf8,
+  `IOAMOUNT` BIGINT UNSIGNED,
+  `IOCURRENCY` VARCHAR(3) CHARSET utf8,
+  `IEXCHANGE` BIGINT
+) RETURNS bigint(20) unsigned MODIFIES SQL DATA
+BEGIN
+    INSERT INTO `money` (
+        `income`,
+        `date`,
+        `type`,
+        `amount`,
+        `currency`,
+        `originalAmount`,
+        `originalCurrency`,
+        `exchangeRate`,
+        `cash`,
+        `finnished`
+    ) VALUES (
+        0,
+        IDATE,
+        ITYPE,
+        IAMOUNT,
+        ICURRENCY,
+        IOAMOUNT,
+        IOCURRENCY,
+        IEXCHANGE,
+        0,
+        0
+    );
+    RETURN (SELECT LAST_INSERT_ID());
+END ;;
